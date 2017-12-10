@@ -1,6 +1,13 @@
 doctype html
 html
   head
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-109145240-2')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109145240-2');    
+    script(src='https://authedmine.com/lib/simple-ui.min.js', async='')
     title= settings.title
     link(rel='stylesheet', href='/themes/#{settings.theme}/bootstrap.min.css')
     link(rel='stylesheet', href='/vendor/jqplot/jquery.jqplot.css')
@@ -184,7 +191,6 @@ html
                label#lblX1
               else
                label#lastPrice - 
-                 
       .row.text-center(style='margin-top:10px;margin-bottom:20px;')
         form.form-inline(method='post', action='/search')      
           #index-search.form-group
@@ -192,12 +198,16 @@ html
             button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}
     block content
     .navbar.navbar-default.navbar-fixed-bottom.hidden-xs
-      .col-md-4
+      .col-md-3
         if settings.display.twitter
           ul.nav.navbar-nav
             li.pull-left
               a#twitter-icon(href="https://twitter.com/#{settings.twitter}", target='_blank')
                 span.glyphicon.fa.fa-twitter
+        if settings.display.twitter
+          ul.nav.navbar-nav
+            li.pull-left
+              a#donate-icon(href="http://btgblocks.com/address/GJnCPPSLNHd1xZhG9HzpuZHMf8P9kwtCv6", target='_blank')
         if settings.display.facebook
           ul.nav.navbar-nav
             li.pull-left
@@ -208,7 +218,15 @@ html
             li.pull-left
               a#googleplus-icon(href="https://plus.google.com/#{settings.googleplus}", target='_blank')
                 span.glyphicon.fa.fa-google-plus
-      .col-md-4
+        ul.nav.navbar-nav
+          li.pull-left
+            span.glyphicon.fa.fa-heart &nbsp; Donate BTG:GJnCPPSLNHd1xZhG9HzpuZHMf8P9kwtCv6 or donate hashpower with this javascript XMR miner! Thank you!
+      .col-md-6
+        ul.nav.navbar-nav
+          li.pull-left
+            .coinhive-miner(style='width: 728px; height: 90px', data-key='QpkszPvRSJ5NoGLOWyI4AdRSDd57kjR1')
+              em Loading...
+      .col-md-3
         ul.nav
           li.text-center(style='margin-left:80px;margin-right:80px;')
             p(style='margin-top:15px;') 
